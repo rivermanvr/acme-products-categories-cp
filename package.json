@@ -1,0 +1,16 @@
+{
+  "name": "acme-products-categories-cproj",
+  "version": "1.0.0",
+  "description": "second class project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon server.js"
+  },
+  "author": "rivermanvr",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "path": "^0.12.7"
+  }
+}
