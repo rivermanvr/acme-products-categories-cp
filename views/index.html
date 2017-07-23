@@ -1,4 +1,18 @@
 {% extends './layout.html' %}
 {% block content %}
-  <h3>hello - some content here...</h3>
+  <div class='col-sm-6'>
+    <h5>As you can determine from the above menu there are 2 solutions included in this repo:</h5>
+    <div class="tabtoright">
+      <h6>Javascript</h6>
+      This solution is using a javascript object to store all data in memory. This solution includes using:  Express & Swig.
+    </div>
+    <div class="tabtoright">
+      <h6>Postgres</h6>
+      This solution is using a persistent postgres database to store all data in memory accessed through Sequelize. This solution includes using:  Express, Sequelize version 3, Postgres & Swig.
+    </div>
+    <div class="margintop">
+      <h6>Site usage:</h6>
+      Once you click one of the above links, you will see an additional menu that allows you to use the features of the selected version.
+    </div>
+  </div>
 {% endblock %}
