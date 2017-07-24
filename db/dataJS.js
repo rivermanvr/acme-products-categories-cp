@@ -24,7 +24,8 @@ const listCat = function (name) {
 
 const addCat = function (name) {
   let keyNames = Object.keys(_data);
-  if (!keyNames.includes(name) && name && name.toLowerCase() !== 'home' && name.length < 23) {
+  keyNames = keyNames.map(keyName => keyName.toLowerCase());
+  if (!keyNames.includes(name.toLowerCase()) && name && name.toLowerCase() !== 'home' && name.length < 23) {
     _data[name] = [];
     return [];
   }
@@ -40,8 +41,9 @@ const removeCat = function (name) {
 
 const changeCat = function (name, nameChg) {
   let keyNames = Object.keys(_data), resultObj = {};
+  let keyNamesLC = keyNames.map(keyName => keyName.toLowerCase());
   keyNames.forEach(keyName => {
-    if (keyName === name && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) resultObj[nameChg] = _data[keyName];
+    if (keyName === name && !keyNamesLC.includes(name.toLowerCase()) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) resultObj[nameChg] = _data[keyName];
     else resultObj[keyName] = _data[keyName];
   })
   _data = resultObj;
@@ -54,7 +56,8 @@ const addProd = function (name, category) {
   let keyNames = productObjects.map(product => {
     return product.name
   })
-  if (!keyNames.includes(name) && name && name.toLowerCase() !== 'home' && name.length < 23) {
+  keyNames = keyNames.map(keyName => keyName.toLowerCase());
+  if (!keyNames.includes(name.toLowerCase()) && name && name.toLowerCase() !== 'home' && name.length < 23) {
     //get a new id:
     let maxId = productObjects.reduce((max, product) => {
       if (product.id > max) return product.id;
@@ -73,9 +76,12 @@ const changeProd = function (id, nameChg, category) {
   id = id * 1;
   let productObjects = _data[category];
   let keyNames = productObjects.map(product => {
-    return product.name
+    return product.name;
   })
-  if (!keyNames.includes(nameChg) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) {
+  let keyNamesLC = keyNames.map(keyName => keyName.toLowerCase());
+  console.log(keyNames)
+  console.log('lc: ', keyNamesLC)
+  if (!keyNamesLC.includes(nameChg.toLowerCase()) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) {
     _data[category] = _data[category].filter(product => {
       if (product.id === id) product.name = nameChg;
       return product;

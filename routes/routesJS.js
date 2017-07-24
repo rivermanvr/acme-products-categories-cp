@@ -33,8 +33,8 @@ router.post('/categories', (req, res, next) => {
   let returnVal = dbJS.addCat(req.body.name);
   if (!returnVal){
     res.locals.error1 = true;
-    res.render('indexJS', { navApp: 'home', name: req.body.name });
-  }else {
+    res.render('indexJS', { navApp: 'home', action: true, name: req.body.name });
+  } else {
     res.redirect('/js/categories');
   }
 });
