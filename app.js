@@ -4,7 +4,7 @@ const path = require( 'path' );
 const swig = require( 'swig' );
 const routesJS = require( './routes/routesJS' );
 const routesPG = require( './routes/routesPG' );
-const bodyParser = require( 'body-Parser' );
+const bodyParser = require( 'body-parser' );
 const methodOverride = require( 'method-override' );
 
 app.set('view engine', 'html');
