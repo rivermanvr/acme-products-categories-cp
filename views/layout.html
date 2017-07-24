@@ -28,6 +28,9 @@
           <nav class="mainnav">
             <ul class="nav nav-tabs">
               <li {% if navApp == 'home' %} class="active" {% endif %}><a href="/js/categories">Home</a></li>
+              {% for catName in catNames %}
+                <li {% if navApp == catName %} class="active" {% endif %}><a href="/js/categories/{{ catName }}/products">{{ catName }}</a></li>
+              {% endfor %}
             </ul>
           </nav>
           <div class="container">

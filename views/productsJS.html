@@ -2,10 +2,11 @@
 {% block content %}
   <div class="row">
     <div class='col-sm-8'>
+      <div class="marginbelow"><h4>Products for {{ navApp }}</h4></div>
       <div>
-        <h5>Add a Category:</h5>
+        <h5>Add a Product:</h5>
         <div class="well">
-          <form action="/js/categories" method="POST">
+          <form action="/js/categories/{{ navApp }}/products" method="POST">
             <input name="name" size="40px" class="marginbelow" value="{{ name }}" />
             <button class="btn btn-primary moveright" type="submit">Submit</button><br />
             <div class="margintop">
@@ -20,25 +21,25 @@
   <div class="row margintop">
     <div class='col-sm-8'>
       <div>
-        <h5>Existing Categories:</h5>
+        <h5>Existing Products:</h5>
         <ul class="list-group">
-          {% for name in catNames %}
+          {% for product in products %}
             {% if action %}
               <li class="list-group-item">
                 <div class="marginbelowsm margintop">
-                  <a href="/js/categories/{{ name }}">{{ name }}</a>
-                  <form action="/js/categories/{{name}}?_method=DELETE" method="POST">
+                  <a href="/js/categories/{{ product.id }}">{{ product.name }}</a>
+                  <form action="/js/categories/{{ product.id }}?_method=DELETE" method="POST">
                     <button class="btn btn-danger pull-right moveup" type="submit">Delete</button>
                   </form>
-                    <button class="btn btn-info pull-right moveup moveleft" onclick="window.location.href='/js/categories/{{name}}'">Edit</button>
+                    <button class="btn btn-info pull-right moveup moveleft" onclick="window.location.href='/js/categories/{{ product.id }}'">Edit</button>
                 </div>
               </li>
-            {% elif name == actionValue  %}
+            {% elif product.id == actionValue  %}
               <li class="list-group-item">
                 <div class="marginbelowsm margintop">
-                    <button class="btn btn-default moveupsm pull-right" onclick="window.location.href='/js/categories'">Cancel</button>
-                  <form action="/js/categories/{{name}}?_method=PUT" method="POST">
-                    <input name="nameChg" type="text" size="50px" value="{{ name }}" />
+                    <button class="btn btn-default moveupsm pull-right" onclick="window.location.href='/js/categories/{{ navApp }}/products'">Cancel</button>
+                  <form action="/js/categories/{{ navApp }}/products/{{product.id}}?_method=PUT" method="POST">
+                    <input name="nameChg" type="text" size="50px" value="{{ product.name }}" />
                     <button class="btn btn-primary pull-right moveupsm moveleft" type="submit">Submit</button>
                   </form>
                 </div>
