@@ -27,11 +27,11 @@
             {% if action %}
               <li class="list-group-item">
                 <div class="marginbelowsm margintop">
-                  <a href="/js/categories/{{ product.id }}">{{ product.name }}</a>
-                  <form action="/js/categories/{{ product.id }}?_method=DELETE" method="POST">
+                  {{ product.name }}
+                  <form action="/js/categories/{{ navApp }}/products/{{ product.id }}?_method=DELETE" method="POST">
                     <button class="btn btn-danger pull-right moveup" type="submit">Delete</button>
                   </form>
-                    <button class="btn btn-info pull-right moveup moveleft" onclick="window.location.href='/js/categories/{{ product.id }}'">Edit</button>
+                    <button class="btn btn-info pull-right moveup moveleft" onclick="window.location.href='/js/categories/{{ navApp }}/products/{{ product.id }}'">Edit</button>
                 </div>
               </li>
             {% elif product.id == actionValue  %}

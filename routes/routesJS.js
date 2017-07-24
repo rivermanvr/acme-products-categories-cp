@@ -53,6 +53,18 @@ router.get('/categories/:name/products', (req, res, next) => {
  res.render('productsJS', { navApp: req.params.name, products, action: true });
 });
 
+//...Category/Products Home plus edit page...
+router.get('/categories/:name/products/:id', (req, res, next) => {
+  let products = dbJS.listCat(req.params.name);
+  res.render('productsJS', { navApp: req.params.name, action: false, products, actionValue: req.params.id });
+});
+
+//...After editing Category, the actual put occurs...
+router.put('/categories/:name/products/:id', (req, res, next) => {
+  dbJS.changeProd(req.params.id, req.body.nameChg, req.params.name);
+  res.redirect(`/js/categories/${req.params.name}/products`);
+});
+
 //...adding a new product
 router.post('/categories/:name/products', (req, res, next) => {
   let returnVal = dbJS.addProd(req.body.name, req.params.name);
@@ -63,6 +75,12 @@ router.post('/categories/:name/products', (req, res, next) => {
   } else {
     res.redirect(`/js/categories/${req.params.name}/products`);
   }
+});
+
+//...removing a product from a category...
+router.delete('/categories/:name/products/:id', (req, res, next) => {
+  dbJS.removeProd(req.params.id, req.params.name);
+  res.redirect(`/js/categories/${req.params.name}/products`);
 });
 
 module.exports = router;

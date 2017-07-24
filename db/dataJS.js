@@ -55,9 +55,32 @@ const addProd = function (name, category) {
     return product.name
   })
   if (!keyNames.includes(name) && name && name.toLowerCase() !== 'home' && name.length < 23) {
-    return 'hello'
+    //get a new id:
+    let maxId = productObjects.reduce((max, product) => {
+      if (product.id > max) return product.id;
+    }, 0) + 1;
+    _data[category].push({ name, id: maxId });
+    return true
   }
 }
 
-module.exports = { addCat, changeCat, removeCat, listCat, addProd };
-// module.exports = { , changeProd, removeProd, listProd };
+const removeProd = function (id, category) {
+  id = id * 1;
+  _data[category] = _data[category].filter(product => product.id !== id);
+}
+
+const changeProd = function (id, nameChg, category) {
+  id = id * 1;
+  let productObjects = _data[category];
+  let keyNames = productObjects.map(product => {
+    return product.name
+  })
+  if (!keyNames.includes(nameChg) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) {
+    _data[category] = _data[category].filter(product => {
+      if (product.id === id) product.name = nameChg;
+      return product;
+    })
+  }
+}
+
+module.exports = { addCat, changeCat, removeCat, listCat, addProd, changeProd, removeProd };
