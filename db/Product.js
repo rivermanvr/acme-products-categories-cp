@@ -1,5 +1,14 @@
 const db = require( './db' );
 
-const Product = db.define(product, {}, {});
+const defineAttr = {
+  name: {
+    type: db.Sequelize.STRING,
+    allowNull: false
+  }
+};
+
+const defineMethods = {};
+
+const Product = db.define('product', defineAttr, defineMethods);
 
 module.exports = Product;
