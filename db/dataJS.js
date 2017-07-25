@@ -5,7 +5,7 @@ let _data = {
     { name: 'Head Rackets', id: 3},
     { name: 'Phantom Rackets', id: 4}
   ],
-  'Music': [
+  Music: [
     { name: 'Gibson Guitars', id: 1},
     { name: 'Korg Pianos', id: 2},
     { name: 'Yamaha Guitars', id: 3}
@@ -43,7 +43,7 @@ const changeCat = function (name, nameChg) {
   let keyNames = Object.keys(_data), resultObj = {};
   let keyNamesLC = keyNames.map(keyName => keyName.toLowerCase());
   keyNames.forEach(keyName => {
-    if (keyName === name && !keyNamesLC.includes(name.toLowerCase()) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) resultObj[nameChg] = _data[keyName];
+    if (keyName === name && !keyNamesLC.includes(nameChg.toLowerCase()) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) resultObj[nameChg] = _data[keyName];
     else resultObj[keyName] = _data[keyName];
   })
   _data = resultObj;

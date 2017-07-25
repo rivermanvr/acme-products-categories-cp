@@ -6,18 +6,18 @@ const dbJS = require( '../db/dataJS' );
 
 //...Categories Home...
 router.get('/categories', (req, res, next) => {
- res.render('indexJS', { navApp: 'home', action: true });
+  res.render('indexJS', { navApp: 'home', action: true });
 });
 
 //...Categories Home plus edit page...
 router.get('/categories/:name', (req, res, next) => {
- res.render('indexJS', { navApp: 'home', action: false, actionValue: req.params.name });
+  res.render('indexJS', { navApp: 'home', action: false, actionValue: req.params.name });
 });
 
 //...After editing Category, the actual put occurs...
 router.put('/categories/:name', (req, res, next) => {
   dbJS.changeCat(req.params.name, req.body.nameChg);
-    res.redirect('/js/categories');
+  res.redirect('/js/categories');
 });
 
 //...adding a new category
