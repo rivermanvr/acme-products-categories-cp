@@ -27,9 +27,20 @@ const seed = () => sync()
     })
     Promise.all(promiseArr);
   })
-  // .then(() => {
-
-  // })
+  .then(() => {
+    let pairArr =
+    [
+      [ 1, 1 ], [ 1, 11 ], [ 1, 7 ], [ 1, 2 ], [ 1, 9 ],
+      [ 2, 11 ], [ 2, 3 ], [ 2, 7 ], [ 3, 4 ], [ 3, 8 ],
+      [ 4, 5 ], [ 4, 6 ], [ 5, 1 ], [ 5, 11 ], [ 5, 3 ],
+      [ 5, 7 ], [ 5, 10 ], [ 5, 2 ], [ 5, 9 ], [ 6, 3 ],
+      [ 6, 7 ], [ 6, 10 ]
+    ];
+    let promiseArr = pairArr.map(pair => {
+      return CategoryProduct.create({ categoryId: pair[0], productId: pair[1] });
+    })
+    Promise.all(promiseArr);
+  })
 
 
 module.exports = { seed, models: { Product, Category, CategoryProduct } };

@@ -79,8 +79,6 @@ const changeProd = function (id, nameChg, category) {
     return product.name;
   })
   let keyNamesLC = keyNames.map(keyName => keyName.toLowerCase());
-  console.log(keyNames)
-  console.log('lc: ', keyNamesLC)
   if (!keyNamesLC.includes(nameChg.toLowerCase()) && nameChg && nameChg.toLowerCase() !== 'home' && nameChg.length < 23) {
     _data[category] = _data[category].filter(product => {
       if (product.id === id) product.name = nameChg;

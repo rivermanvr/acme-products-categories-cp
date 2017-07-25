@@ -2,14 +2,6 @@ const express = require( 'express' );
 const router = express.Router();
 const dbJS = require( '../db/dataJS' );
 
-router.use((req, res, next) => {
-  let categories = dbJS.listCat();
-  res.locals.catNames = Object.keys(categories);
-  res.locals.categories = JSON.stringify(categories, null, '\t');
-  res.locals.nav = 'javascript';
-  next();
-});
-
 //Category Routes Follow:
 
 //...Categories Home...
