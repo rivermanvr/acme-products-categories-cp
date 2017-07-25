@@ -63,7 +63,7 @@ const addProd = function (name, category) {
       if (product.id > max) return product.id;
     }, 0) + 1;
     _data[category].push({ name, id: maxId });
-    return true
+    return true;
   }
 }
 
