@@ -10,7 +10,8 @@ const sync = () => db.sync({ force: true });
 
 const seed = () => sync()
   .then(() => {
-    let categoryArr = ['Hunting', 'Running', 'Swimming', 'Music', 'Outdoors', 'Baseball'];
+    //.........putting in a duplicate category so can test validation error handling.......
+    let categoryArr = ['Hunting', 'Running', 'Swimming', 'Music', 'Outdoors', 'Baseball', 'Hunting'];
     let id = 0;
     let promiseArr = categoryArr.map(category => {
       id++;
@@ -39,8 +40,11 @@ const seed = () => sync()
     let promiseArr = pairArr.map(pair => {
       return CategoryProduct.create({ categoryId: pair[0], productId: pair[1] });
     })
-    Promise.all(promiseArr);
+    return Promise.all(promiseArr);
   })
-
+  // .......just an example of getting downstream data..........
+  .then(() => Category.findById(2, { include: [{ model: Product }] }
+  ))
+  .then(category => console.log('category: ', category.dataValues.name, ', and an example of downstream product data: ', category.dataValues.products[1].name));
 
 module.exports = { seed, models: { Product, Category, CategoryProduct } };

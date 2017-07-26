@@ -3,12 +3,13 @@ const db = require( './db' );
 const defineAttr = {
   name: {
     type: db.Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   }
 };
 
-const defineMethods = {};
+const defineOptions = {};
 
-const Category = db.define('category', defineAttr, defineMethods);
+const Category = db.define('category', defineAttr, defineOptions);
 
 module.exports = Category;
