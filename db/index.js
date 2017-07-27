@@ -58,8 +58,9 @@ const seed = () => sync()
     return Category.list();
   })
   .then(categories => {
+      console.log('an example of a class method: ');
     categories.forEach(category => {
-      console.log('an example of a class method: ', category.dataValues);
+      console.log(category.dataValues);
     })
   });
 
