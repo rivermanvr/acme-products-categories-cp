@@ -6,12 +6,13 @@ const CategoryProduct = require( './CategoryProduct' );
 Category.belongsToMany(Product, { through: CategoryProduct });
 Product.belongsToMany(Category, { through: CategoryProduct });
 
+//....remove force true when in production....
 const sync = () => db.sync({ force: true });
 
 const seed = () => sync()
   .then(() => {
     //.........putting in a duplicate category so can test validation error handling.......
-    let categoryArr = ['Hunting', 'Running', 'Swimming', 'Music', 'Outdoors', 'Baseball', 'Hunting'];
+    let categoryArr = ['Hunting', 'Running', 'Swimming', 'Music', 'Outdoors', 'Baseball'];
     let id = 0;
     let promiseArr = categoryArr.map(category => {
       id++;
