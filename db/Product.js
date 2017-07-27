@@ -16,12 +16,6 @@ const defineAttr = {
 };
 
 const defineOptions = {
-  // getter example:
-  getterMethods: {
-    doubleName: function () {
-      return this.name + ' ' + this.name;
-    }
-  }
 };
 
 const Product = db.define('product', defineAttr, defineOptions);

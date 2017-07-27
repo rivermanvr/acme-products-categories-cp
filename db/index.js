@@ -50,6 +50,9 @@ const seed = () => sync()
     console.log('category: ', category.dataValues.name);
     console.log('and an example of downstream product data: ', category.dataValues.products[1].name);
     console.log('and a getter ex: ', category.doubleName);
+    
+    // you need to invoke the instance method....
+    console.log('and an instance ex: ', category.greet());
   });
 
 module.exports = { seed, models: { Product, Category, CategoryProduct } };

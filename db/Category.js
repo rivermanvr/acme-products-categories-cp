@@ -16,7 +16,7 @@ const defineAttr = {
 };
 
 const defineOptions = {
-  // getter example:
+  // just a getter example:
   getterMethods: {
     doubleName: function () {
       return this.name + ' ' + this.name;
@@ -25,5 +25,12 @@ const defineOptions = {
 };
 
 const Category = db.define('category', defineAttr, defineOptions);
+
+// just an example of an instance method:
+Category.prototype.greet = function () {
+      return `The category record that you selected is ${this.name}`;
+    }
+
+
 
 module.exports = Category;
