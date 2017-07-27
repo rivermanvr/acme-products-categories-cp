@@ -46,6 +46,10 @@ const seed = () => sync()
   // .......just an example of getting downstream data..........
   .then(() => Category.findById(2, { include: [{ model: Product }] }
   ))
-  .then(category => console.log('category: ', category.dataValues.name, ', and an example of downstream product data: ', category.dataValues.products[1].name));
+  .then(category => {
+    console.log('category: ', category.dataValues.name);
+    console.log('and an example of downstream product data: ', category.dataValues.products[1].name);
+    console.log('and a getter ex: ', category.doubleName);
+  });
 
 module.exports = { seed, models: { Product, Category, CategoryProduct } };

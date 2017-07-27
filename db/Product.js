@@ -6,6 +6,7 @@ const defineAttr = {
     allowNull: false,
     unique: true,
     validation: {
+      notEmpty: true,
       len: {
         args: [1, 22],
         msg: 'Please enter a name with a length from 1 to 22'
@@ -14,7 +15,14 @@ const defineAttr = {
   }
 };
 
-const defineOptions = {};
+const defineOptions = {
+  // getter example:
+  getterMethods: {
+    doubleName: function () {
+      return this.name + ' ' + this.name;
+    }
+  }
+};
 
 const Product = db.define('product', defineAttr, defineOptions);
 
