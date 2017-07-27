@@ -50,9 +50,17 @@ const seed = () => sync()
     console.log('category: ', category.dataValues.name);
     console.log('and an example of downstream product data: ', category.dataValues.products[1].name);
     console.log('and a getter ex: ', category.doubleName);
-    
+
     // you need to invoke the instance method....
     console.log('and an instance ex: ', category.greet());
+
+    // an example of a class method
+    return Category.list();
+  })
+  .then(categories => {
+    categories.forEach(category => {
+      console.log('an example of a class method: ', category.dataValues);
+    })
   });
 
 module.exports = { seed, models: { Product, Category, CategoryProduct } };

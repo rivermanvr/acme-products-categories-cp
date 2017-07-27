@@ -28,9 +28,11 @@ const Category = db.define('category', defineAttr, defineOptions);
 
 // just an example of an instance method:
 Category.prototype.greet = function () {
-      return `The category record that you selected is ${this.name}`;
-    }
+  return `The category record that you selected is ${this.name}`;
+};
 
-
+Category.list = function () {
+  return this.findAll()
+}
 
 module.exports = Category;
